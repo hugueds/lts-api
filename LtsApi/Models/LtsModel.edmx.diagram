@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d1a43e5945446468e723aac805eedd2" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.LTSModel.EWO" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.LTSModel.EWO_TASKROW" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.LTSModel.TB_FUNCTION" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.LTSModel.TB_STATION" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.LTSModel.TB_WORKPLACE" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Models.LTSModel.FK_TB_STATION_TB_FUNCTION" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.LTSModel.FK_TB_WORKPLACE_TB_STATION" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Models.LTSModel.DRUN" Width="1.5" PointX="5.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

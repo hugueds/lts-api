@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="394b5530-6059-4795-b4b5-eb5609e3f01a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://mix.br.scania.com/ws/mixservice.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MixService.xsd" MetadataType="Schema" ID="63905e4a-0ad9-4ef4-a797-0c07c0ebc82e" SourceId="1" SourceUrl="http://mix.br.scania.com/ws/MixService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MixService1.xsd" MetadataType="Schema" ID="85b193cc-38fb-4351-8c3a-a91755c4643b" SourceId="1" SourceUrl="http://mix.br.scania.com/ws/MixService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MixService.wsdl" MetadataType="Wsdl" ID="8f3e3268-68a9-4bca-8953-cba8ba53cf12" SourceId="1" SourceUrl="http://mix.br.scania.com/ws/mixservice.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

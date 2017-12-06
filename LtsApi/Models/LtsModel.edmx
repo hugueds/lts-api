@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.LTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DRUN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="StationDescription" Type="varchar" MaxLength="30" />
+          <Property Name="CellDescription" Type="varchar" MaxLength="20" />
+          <Property Name="StationPosition" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="160" />
+          <Property Name="Responsible" Type="varchar" MaxLength="20" />
+          <Property Name="isStopTime" Type="bit" />
+          <Property Name="isProcessStopTime" Type="bit" />
+          <Property Name="Popid" Type="varchar" MaxLength="7" />
+          <Property Name="TimeAmount" Type="varchar" MaxLength="20" />
+          <Property Name="AndonMessage" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="EWO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTRACTID" Type="int" Nullable="false" />
+          <Property Name="IPOID" Type="int" Nullable="false" />
+          <Property Name="CUTOO" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CUOBJ" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="OBJSNAME" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CHASSINO" Type="varchar" MaxLength="8" />
+          <Property Name="UPPLAGG" Type="varchar" MaxLength="2" />
+          <Property Name="LOPNR" Type="varchar" MaxLength="3" />
+          <Property Name="ORDERREF" Type="varchar" MaxLength="3" />
+          <Property Name="POPID" Type="varchar" MaxLength="7" />
+          <Property Name="PRODUCT_INDIVIDUAL" Type="varchar" MaxLength="10" />
+          <Property Name="PLSTART" Type="varchar" MaxLength="12" />
+          <Property Name="CIIDNO" Type="varchar" MaxLength="12" />
+          <Property Name="DCIREF" Type="int" />
+          <Property Name="TYPEPLATE" Type="varchar" MaxLength="54" />
+          <Property Name="TYPEDES1" Type="int" />
+          <Property Name="TYPEDES2" Type="int" />
+          <Property Name="TYPEDES3" Type="int" />
+          <Property Name="TYPEDES4" Type="int" />
+          <Property Name="TYPEDES5" Type="int" />
+          <Property Name="TYPEDES6" Type="int" />
+          <Property Name="TYPEDES7" Type="int" />
+          <Property Name="TYPEDES8" Type="int" />
+          <Property Name="TYPEDES9" Type="int" />
+          <Property Name="TYPEDES10" Type="int" />
+          <Property Name="PARTPER" Type="varchar" MaxLength="7" />
+          <Property Name="PAOBJ" Type="varchar" MaxLength="13" />
+          <Property Name="VINCODE" Type="varchar" MaxLength="17" />
+          <Property Name="DATE_INSERTED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EWO_TASKROW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTRACTID" Type="int" Nullable="false" />
+          <Property Name="IPOID" Type="int" Nullable="false" />
+          <Property Name="WPLOBJ" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="TASKOBJ" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="TOO" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="OBJ" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="SNAME" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="QUANTITY" Type="float" />
+          <Property Name="CCPOSNO" Type="varchar" MaxLength="240" Nullable="false" />
+          <Property Name="CIIDNO" Type="varchar" MaxLength="12" />
+          <Property Name="CONID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="POSNO" Type="int" />
+          <Property Name="LNAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LINENUM" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_FUNCTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TB_STATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_FUNCTION" Type="int" Nullable="false" />
+          <Property Name="POSITION" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="TB_WORKPLACE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_STATION" Type="int" Nullable="false" />
+          <Property Name="POSITION" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="CIMI" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <Association Name="FK_TB_STATION_TB_FUNCTION">
+          <End Role="TB_FUNCTION" Type="Self.TB_FUNCTION" Multiplicity="1" />
+          <End Role="TB_STATION" Type="Self.TB_STATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FUNCTION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_STATION">
+              <PropertyRef Name="ID_FUNCTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_WORKPLACE_TB_STATION">
+          <End Role="TB_STATION" Type="Self.TB_STATION" Multiplicity="1" />
+          <End Role="TB_WORKPLACE" Type="Self.TB_WORKPLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_STATION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_WORKPLACE">
+              <PropertyRef Name="ID_STATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelsLTSModelStoreContainer">
+          <EntitySet Name="DRUN" EntityType="Self.DRUN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EWO" EntityType="Self.EWO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EWO_TASKROW" EntityType="Self.EWO_TASKROW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FUNCTION" EntityType="Self.TB_FUNCTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_STATION" EntityType="Self.TB_STATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_WORKPLACE" EntityType="Self.TB_WORKPLACE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_STATION_TB_FUNCTION" Association="Self.FK_TB_STATION_TB_FUNCTION">
+            <End Role="TB_FUNCTION" EntitySet="TB_FUNCTION" />
+            <End Role="TB_STATION" EntitySet="TB_STATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_WORKPLACE_TB_STATION" Association="Self.FK_TB_WORKPLACE_TB_STATION">
+            <End Role="TB_STATION" EntitySet="TB_STATION" />
+            <End Role="TB_WORKPLACE" EntitySet="TB_WORKPLACE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models.LTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EWO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTRACTID" Type="Int32" Nullable="false" />
+          <Property Name="IPOID" Type="Int32" Nullable="false" />
+          <Property Name="CUTOO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUOBJ" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBJSNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CHASSINO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UPPLAGG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LOPNR" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ORDERREF" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="POPID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_INDIVIDUAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PLSTART" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CIIDNO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DCIREF" Type="Int32" />
+          <Property Name="TYPEPLATE" Type="String" MaxLength="54" FixedLength="false" Unicode="false" />
+          <Property Name="TYPEDES1" Type="Int32" />
+          <Property Name="TYPEDES2" Type="Int32" />
+          <Property Name="TYPEDES3" Type="Int32" />
+          <Property Name="TYPEDES4" Type="Int32" />
+          <Property Name="TYPEDES5" Type="Int32" />
+          <Property Name="TYPEDES6" Type="Int32" />
+          <Property Name="TYPEDES7" Type="Int32" />
+          <Property Name="TYPEDES8" Type="Int32" />
+          <Property Name="TYPEDES9" Type="Int32" />
+          <Property Name="TYPEDES10" Type="Int32" />
+          <Property Name="PARTPER" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="PAOBJ" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="VINCODE" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="DATE_INSERTED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EWO_TASKROW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTRACTID" Type="Int32" Nullable="false" />
+          <Property Name="IPOID" Type="Int32" Nullable="false" />
+          <Property Name="WPLOBJ" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TASKOBJ" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TOO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBJ" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QUANTITY" Type="Double" />
+          <Property Name="CCPOSNO" Type="String" MaxLength="240" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIIDNO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CONID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSNO" Type="Int32" />
+          <Property Name="LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LINENUM" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB_FUNCTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_STATION" Relationship="Self.FK_TB_STATION_TB_FUNCTION" FromRole="TB_FUNCTION" ToRole="TB_STATION" />
+        </EntityType>
+        <EntityType Name="TB_STATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FUNCTION" Type="Int32" Nullable="false" />
+          <Property Name="POSITION" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_FUNCTION" Relationship="Self.FK_TB_STATION_TB_FUNCTION" FromRole="TB_STATION" ToRole="TB_FUNCTION" />
+          <NavigationProperty Name="TB_WORKPLACE" Relationship="Self.FK_TB_WORKPLACE_TB_STATION" FromRole="TB_STATION" ToRole="TB_WORKPLACE" />
+        </EntityType>
+        <EntityType Name="TB_WORKPLACE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_STATION" Type="Int32" Nullable="false" />
+          <Property Name="POSITION" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CIMI" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_STATION" Relationship="Self.FK_TB_WORKPLACE_TB_STATION" FromRole="TB_WORKPLACE" ToRole="TB_STATION" />
+        </EntityType>
+        <Association Name="FK_TB_STATION_TB_FUNCTION">
+          <End Role="TB_FUNCTION" Type="Self.TB_FUNCTION" Multiplicity="1" />
+          <End Role="TB_STATION" Type="Self.TB_STATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FUNCTION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_STATION">
+              <PropertyRef Name="ID_FUNCTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_WORKPLACE_TB_STATION">
+          <End Role="TB_STATION" Type="Self.TB_STATION" Multiplicity="1" />
+          <End Role="TB_WORKPLACE" Type="Self.TB_WORKPLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_STATION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_WORKPLACE">
+              <PropertyRef Name="ID_STATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LTSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EWO" EntityType="Self.EWO" />
+          <EntitySet Name="EWO_TASKROW" EntityType="Self.EWO_TASKROW" />
+          <EntitySet Name="TB_FUNCTION" EntityType="Self.TB_FUNCTION" />
+          <EntitySet Name="TB_STATION" EntityType="Self.TB_STATION" />
+          <EntitySet Name="TB_WORKPLACE" EntityType="Self.TB_WORKPLACE" />
+          <AssociationSet Name="FK_TB_STATION_TB_FUNCTION" Association="Self.FK_TB_STATION_TB_FUNCTION">
+            <End Role="TB_FUNCTION" EntitySet="TB_FUNCTION" />
+            <End Role="TB_STATION" EntitySet="TB_STATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_WORKPLACE_TB_STATION" Association="Self.FK_TB_WORKPLACE_TB_STATION">
+            <End Role="TB_STATION" EntitySet="TB_STATION" />
+            <End Role="TB_WORKPLACE" EntitySet="TB_WORKPLACE" />
+          </AssociationSet>
+          <EntitySet Name="DRUN" EntityType="Models.LTSModel.DRUN" />
+        </EntityContainer>
+        <EntityType Name="DRUN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="StationDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CellDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StationPosition" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Name="Responsible" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isStopTime" Type="Boolean" />
+          <Property Name="isProcessStopTime" Type="Boolean" />
+          <Property Name="Popid" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="TimeAmount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AndonMessage" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsLTSModelStoreContainer" CdmEntityContainer="LTSEntities">
+          <EntitySetMapping Name="EWO">
+            <EntityTypeMapping TypeName="Models.LTSModel.EWO">
+              <MappingFragment StoreEntitySet="EWO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONTRACTID" ColumnName="CONTRACTID" />
+                <ScalarProperty Name="IPOID" ColumnName="IPOID" />
+                <ScalarProperty Name="CUTOO" ColumnName="CUTOO" />
+                <ScalarProperty Name="CUOBJ" ColumnName="CUOBJ" />
+                <ScalarProperty Name="OBJSNAME" ColumnName="OBJSNAME" />
+                <ScalarProperty Name="CHASSINO" ColumnName="CHASSINO" />
+                <ScalarProperty Name="UPPLAGG" ColumnName="UPPLAGG" />
+                <ScalarProperty Name="LOPNR" ColumnName="LOPNR" />
+                <ScalarProperty Name="ORDERREF" ColumnName="ORDERREF" />
+                <ScalarProperty Name="POPID" ColumnName="POPID" />
+                <ScalarProperty Name="PRODUCT_INDIVIDUAL" ColumnName="PRODUCT_INDIVIDUAL" />
+                <ScalarProperty Name="PLSTART" ColumnName="PLSTART" />
+                <ScalarProperty Name="CIIDNO" ColumnName="CIIDNO" />
+                <ScalarProperty Name="DCIREF" ColumnName="DCIREF" />
+                <ScalarProperty Name="TYPEPLATE" ColumnName="TYPEPLATE" />
+                <ScalarProperty Name="TYPEDES1" ColumnName="TYPEDES1" />
+                <ScalarProperty Name="TYPEDES2" ColumnName="TYPEDES2" />
+                <ScalarProperty Name="TYPEDES3" ColumnName="TYPEDES3" />
+                <ScalarProperty Name="TYPEDES4" ColumnName="TYPEDES4" />
+                <ScalarProperty Name="TYPEDES5" ColumnName="TYPEDES5" />
+                <ScalarProperty Name="TYPEDES6" ColumnName="TYPEDES6" />
+                <ScalarProperty Name="TYPEDES7" ColumnName="TYPEDES7" />
+                <ScalarProperty Name="TYPEDES8" ColumnName="TYPEDES8" />
+                <ScalarProperty Name="TYPEDES9" ColumnName="TYPEDES9" />
+                <ScalarProperty Name="TYPEDES10" ColumnName="TYPEDES10" />
+                <ScalarProperty Name="PARTPER" ColumnName="PARTPER" />
+                <ScalarProperty Name="PAOBJ" ColumnName="PAOBJ" />
+                <ScalarProperty Name="VINCODE" ColumnName="VINCODE" />
+                <ScalarProperty Name="DATE_INSERTED" ColumnName="DATE_INSERTED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EWO_TASKROW">
+            <EntityTypeMapping TypeName="Models.LTSModel.EWO_TASKROW">
+              <MappingFragment StoreEntitySet="EWO_TASKROW">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONTRACTID" ColumnName="CONTRACTID" />
+                <ScalarProperty Name="IPOID" ColumnName="IPOID" />
+                <ScalarProperty Name="WPLOBJ" ColumnName="WPLOBJ" />
+                <ScalarProperty Name="TASKOBJ" ColumnName="TASKOBJ" />
+                <ScalarProperty Name="TOO" ColumnName="TOO" />
+                <ScalarProperty Name="OBJ" ColumnName="OBJ" />
+                <ScalarProperty Name="SNAME" ColumnName="SNAME" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="CCPOSNO" ColumnName="CCPOSNO" />
+                <ScalarProperty Name="CIIDNO" ColumnName="CIIDNO" />
+                <ScalarProperty Name="CONID" ColumnName="CONID" />
+                <ScalarProperty Name="POSNO" ColumnName="POSNO" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="LINENUM" ColumnName="LINENUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FUNCTION">
+            <EntityTypeMapping TypeName="Models.LTSModel.TB_FUNCTION">
+              <MappingFragment StoreEntitySet="TB_FUNCTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_STATION">
+            <EntityTypeMapping TypeName="Models.LTSModel.TB_STATION">
+              <MappingFragment StoreEntitySet="TB_STATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_FUNCTION" ColumnName="ID_FUNCTION" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_WORKPLACE">
+            <EntityTypeMapping TypeName="Models.LTSModel.TB_WORKPLACE">
+              <MappingFragment StoreEntitySet="TB_WORKPLACE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_STATION" ColumnName="ID_STATION" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CIMI" ColumnName="CIMI" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DRUN">
+            <EntityTypeMapping TypeName="Models.LTSModel.DRUN">
+              <MappingFragment StoreEntitySet="DRUN">
+                <ScalarProperty Name="AndonMessage" ColumnName="AndonMessage" />
+                <ScalarProperty Name="TimeAmount" ColumnName="TimeAmount" />
+                <ScalarProperty Name="Popid" ColumnName="Popid" />
+                <ScalarProperty Name="isProcessStopTime" ColumnName="isProcessStopTime" />
+                <ScalarProperty Name="isStopTime" ColumnName="isStopTime" />
+                <ScalarProperty Name="Responsible" ColumnName="Responsible" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StationPosition" ColumnName="StationPosition" />
+                <ScalarProperty Name="CellDescription" ColumnName="CellDescription" />
+                <ScalarProperty Name="StationDescription" ColumnName="StationDescription" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
